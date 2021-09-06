@@ -1,5 +1,4 @@
 import axios from "axios";
-import li from "li";
 
 axios.defaults.baseURL = "https://swapi.dev/api/";
 
@@ -24,7 +23,7 @@ export const getCharacters = async (page = null) => {
  *
  * @returns Promise
  */
-export const getPerson = async (id = null) => {
+export const getPerson = async (id) => {
 	return get(`/people/${id}`);
 };
 

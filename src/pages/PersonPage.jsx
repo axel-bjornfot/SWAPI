@@ -1,14 +1,15 @@
 import React, { useEffect, useState } from "react";
-import Button from "react-bootstrap/Button";
 import Card from "react-bootstrap/Card";
 import Container from "react-bootstrap/Container";
 import { useQuery } from "react-query";
+import { useParams } from "react-router-dom";
 import { getPerson } from "../services/SWAPI";
 
-const CharactersPage = () => {
+const PersonPage = () => {
+	const { id } = useParams();
 	const { data, error, isError, isFetching, isLoading } = useQuery(
-		["characters"],
-		() => getPerson()
+		["person", id],
+		() => getPerson(id)
 	);
 
 	useEffect(() => {
@@ -25,21 +26,22 @@ const CharactersPage = () => {
 				</p>
 			)}
 
-			{data?.results.results && (
-				<>
-					{data.results.results((character) => (
-						<Card>
-							<div className="card-body">
-								<h5 className="card-title">{character.name}</h5>
-								<h6 className="card-subtitle mb-2 text-muted"></h6>
-								<p className="card-text"></p>
-							</div>
-						</Card>
-					))}
-				</>
+			{data?.results && (
+				<Card>
+					<h1 className="card-header">{data.results.name}</h1>
+					<div class="card-body">
+						<h3 className="card-text">
+							Gender: {data.results.gender}
+						</h3>
+						<p className="h3">Height: {data.results.height}cm</p>
+						<p className="h3">
+							Hair-color: {data.results.hair_color}
+						</p>
+					</div>
+				</Card>
 			)}
 		</Container>
 	);
 };
 
-export default CharactersPage;
+export default PersonPage;

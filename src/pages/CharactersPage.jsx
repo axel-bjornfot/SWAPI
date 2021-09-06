@@ -3,10 +3,12 @@ import Button from "react-bootstrap/Button";
 import Card from "react-bootstrap/Card";
 import Container from "react-bootstrap/Container";
 import { useQuery } from "react-query";
+import { useHistory } from "react-router";
 import { getCharacters } from "../services/SWAPI";
 
 const CharactersPage = () => {
 	const [page, setPage] = useState(1);
+	const history = useHistory();
 	const { data, error, isError, isFetching, isLoading, isPreviousData } =
 		useQuery(["characters", page], () => getCharacters(page), {
 			staleTime: 1000 * 60 * 5, // 5 mins
@@ -34,17 +36,26 @@ const CharactersPage = () => {
 
 				{data?.results.results && (
 					<>
-						{data.results.results.map((charactrer, i) => (
+						{data.results.results.map((character, i) => (
 							<Card key={i}>
 								<div className="card-body">
 									<h5 className="card-title">
-										{charactrer.name}
+										{character.name}
 									</h5>
 									<h6 className="card-subtitle mb-2 text-muted"></h6>
 									<p className="card-text"></p>
-									<a href="#" className="card-link">
+									<Button
+										onClick={() => {
+											history.push(
+												`/person/${character.url.replace(
+													"https://swapi.dev/api/people/",
+													""
+												)}`
+											);
+										}}
+									>
 										More info
-									</a>
+									</Button>
 								</div>
 							</Card>
 						))}
