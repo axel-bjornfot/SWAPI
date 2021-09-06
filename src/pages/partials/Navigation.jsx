@@ -14,11 +14,20 @@ const Navigation = () => {
 
 				<Navbar.Toggle aria-controls="basic-navbar-nav" />
 				<Nav className="ms-auto">
-					<NavLink to="/posts" className="nav-link">
-						<span role="img" aria-label="a postal horn">
-							📯
-						</span>{" "}
-						Posts
+					<NavLink to="/characters" className="nav-link">
+						<span>Characters</span>
+					</NavLink>
+					<NavLink to="/planets" className="nav-link">
+						<span>Planets</span>
+					</NavLink>
+					<NavLink to="/films" className="nav-link">
+						<span>Films</span>
+					</NavLink>
+					<NavLink to="/starships" className="nav-link">
+						<span>Starships</span>
+					</NavLink>
+					<NavLink to="/species" className="nav-link">
+						<span>Species</span>
 					</NavLink>
 				</Nav>
 			</Container>
