@@ -4,7 +4,6 @@ import Card from "react-bootstrap/Card";
 import Container from "react-bootstrap/Container";
 import { useQuery } from "react-query";
 import { getPlanets } from "../services/SWAPI";
-import PageButtons from "../components/PageButtons/";
 
 const PlanetsPage = () => {
 	const [page, setPage] = useState(1);

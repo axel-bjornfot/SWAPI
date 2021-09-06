@@ -20,6 +20,15 @@ export const getCharacters = async (page = null) => {
 };
 
 /**
+ * Get person
+ *
+ * @returns Promise
+ */
+export const getPerson = async (id = null) => {
+	return get(`/people/${id}`);
+};
+
+/**
  * Get planets
  *
  * @returns Promise
@@ -57,6 +66,7 @@ export const getSpecies = async (page = null) => {
 
 export default {
 	getCharacters,
+	getPerson,
 	getPlanets,
 	getFilms,
 	getStarships,

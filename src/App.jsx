@@ -9,6 +9,7 @@ import PlanetsPage from "./pages/PlanetsPage";
 import FilmsPage from "./pages/FilmsPage";
 import StarshipsPage from "./pages/StarshipsPage";
 import SpeciesPage from "./pages/SpeciesPage";
+import PersonPage from "./pages/PersonPage";
 
 function App() {
 	return (
@@ -41,6 +42,10 @@ function App() {
 
 					<Route path="/species">
 						<SpeciesPage />
+					</Route>
+
+					<Route path="/person/:id">
+						<PersonPage />
 					</Route>
 
 					<Route>
